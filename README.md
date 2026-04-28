@@ -18,4 +18,4 @@ The UI uses a soft anime-inspired flat design style, with light beige, soft blue
 Project URL:
 
 ```text
-(https://xy-1005.github.io/kana-learning-site/)
+https://xy-1005.github.io/kana-learning-site/
