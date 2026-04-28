@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>五十音假名学习屋</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-bg">
+    <header class="site-header">
+      <div class="brand">
+        <div class="brand-icon">あ</div>
+        <div>
+          <h1>五十音假名学习屋</h1>
+          <p>Hiragana & Katakana Study Room</p>
+        </div>
+      </div>
+
+      <nav class="top-nav">
+        <button class="nav-btn active" data-page="home">主页</button>
+        <button class="nav-btn" data-page="study">阅读模式</button>
+        <button class="nav-btn" data-page="game">游戏模式</button>
+      </nav>
+    </header>
+
+    <main>
+      <!-- 首页 -->
+      <section id="home" class="page-section active">
+        <div class="hero">
+          <div class="hero-content">
+            <span class="tag">日语入门 · 五十音</span>
+            <h2>从 あ ア 开始，轻松记住五十音</h2>
+            <p>
+              一个适合零基础学习的假名小网站。你可以先在阅读模式里熟悉平假名和片假名，
+              再进入游戏模式完成 10 题小测试。
+            </p>
+
+            <div class="hero-actions">
+              <button class="primary-btn" data-page="study">进入阅读模式</button>
+              <button class="secondary-btn" data-page="game">开始游戏模式</button>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="floating-card card-one">
+              <span>あ</span>
+              <small>a</small>
+            </div>
+            <div class="floating-card card-two">
+              <span>カ</span>
+              <small>ka</small>
+            </div>
+            <div class="floating-card card-three">
+              <span>み</span>
+              <small>mi</small>
+            </div>
+
+            <div class="mascot">
+              <div class="mascot-ear left"></div>
+              <div class="mascot-ear right"></div>
+              <div class="mascot-face">
+                <div class="eyes">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div class="mouth"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>同页对照</h3>
+            <p>平假名、片假名和罗马音放在同一张表里，方便对比记忆。</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>10 题一轮</h3>
+            <p>游戏模式一次只练 10 题，节奏轻量，不容易有压力。</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>移动端友好</h3>
+            <p>手机和电脑都能看，适合作为作品集项目展示。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 阅读模式 -->
+      <section id="study" class="page-section">
+        <div class="section-title">
+          <span class="tag">Reading Mode</span>
+          <h2>五十音阅读模式</h2>
+          <p>每个格子上方是平假名和片假名，下方是对应罗马音。</p>
+        </div>
+
+        <div class="kana-panel">
+          <div class="kana-table-wrap">
+            <table class="kana-table">
+              <thead>
+                <tr>
+                  <th>あ段</th>
+                  <th>い段</th>
+                  <th>う段</th>
+                  <th>え段</th>
+                  <th>お段</th>
+                </tr>
+              </thead>
+              <tbody id="kanaTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="study-note">
+          <h3>学习小提示</h3>
+          <p>
+            建议先横向读一行，例如：あ・い・う・え・お；
+            再纵向记一列，例如：あ・か・さ・た・な。
+          </p>
+        </div>
+      </section>
+
+      <!-- 游戏模式 -->
+      <section id="game" class="page-section">
+        <div class="section-title">
+          <span class="tag">Game Mode</span>
+          <h2>五十音测试</h2>
+          <p>选择测试平假名或片假名，一轮共 10 题。</p>
+        </div>
+
+        <div class="game-layout">
+          <div class="game-card">
+            <div class="game-top">
+              <div>
+                <p class="game-label">当前模式</p>
+                <h3 id="modeTitle">平假名测试</h3>
+              </div>
+
+              <div class="score-box">
+                <span id="questionCount">0</span>
+                <small>/ 10</small>
+              </div>
+            </div>
+
+            <div class="mode-switch">
+              <button class="mode-btn active" data-mode="hiragana">测试平假名</button>
+              <button class="mode-btn" data-mode="katakana">测试片假名</button>
+            </div>
+
+            <div class="question-box">
+              <p id="questionType">请选择正确读音</p>
+              <div id="questionText" class="question-text">あ</div>
+            </div>
+
+            <div id="options" class="options"></div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <div class="progress-area">
+              <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+              </div>
+
+              <p id="roundResult" class="round-result"></p>
+
+              <button id="restartBtn" class="primary-btn restart hidden">
+                再来一轮
+              </button>
+            </div>
+          </div>
+
+          <aside class="game-side">
+            <h3>玩法说明</h3>
+            <ul>
+              <li>每轮随机抽取 10 题。</li>
+              <li>题型会在“假名选罗马音”和“罗马音选假名”之间随机切换。</li>
+              <li>答题后会自动进入下一题。</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
